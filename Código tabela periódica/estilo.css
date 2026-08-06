@@ -1,0 +1,263 @@
+:root {
+  --fundo: #07111f;
+  --painel: #101d30;
+  --texto: #f5f7fb;
+  --texto-secundario: #a8b3c7;
+  --borda: rgba(255, 255, 255, 0.13);
+  --destaque: #5eead4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, #153257 0, transparent 40%),
+    var(--fundo);
+}
+
+header,
+main,
+footer {
+  width: min(1500px, 94%);
+  margin-inline: auto;
+}
+
+header {
+  padding: 36px 0 22px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+}
+
+header p,
+footer p {
+  color: var(--texto-secundario);
+}
+
+.controles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+input,
+button {
+  color: var(--texto);
+  font: inherit;
+}
+
+input {
+  width: min(500px, 100%);
+  padding: 13px 16px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  outline: none;
+  background: var(--painel);
+}
+
+input:focus {
+  border-color: var(--destaque);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.18);
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+  cursor: pointer;
+  background: var(--painel);
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filtro {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+}
+
+.filtro.ativo {
+  border-color: white;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.16);
+}
+
+.cor {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--cor);
+}
+
+.resultado {
+  min-height: 24px;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+.rolagem {
+  overflow-x: auto;
+  padding: 12px 4px 22px;
+}
+
+.tabela-periodica {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(62px, 1fr));
+  grid-template-rows: repeat(9, 78px);
+  gap: 6px;
+  min-width: 1218px;
+}
+
+.elemento {
+  position: relative;
+  grid-column: var(--coluna);
+  grid-row: var(--linha);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: #07111f;
+  text-align: center;
+  background: var(--cor);
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+}
+
+.elemento:hover {
+  z-index: 2;
+  transform: scale(1.12);
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.38);
+}
+
+.elemento .numero {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-size: 0.66rem;
+}
+
+.elemento .simbolo {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.elemento .nome {
+  overflow: hidden;
+  font-size: 0.66rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.elemento .massa {
+  margin-top: 2px;
+  font-size: 0.58rem;
+}
+
+.elemento.oculto {
+  opacity: 0.1;
+  filter: grayscale(1);
+}
+
+.separador {
+  grid-column: 1 / 19;
+  grid-row: 8;
+  align-self: center;
+  color: var(--texto-secundario);
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+dialog {
+  width: min(440px, 90%);
+  padding: 28px;
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  color: var(--texto);
+  background: #101d30;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(4px);
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 0;
+  font-size: 1.7rem;
+  background: transparent;
+}
+
+.simbolo-grande {
+  display: grid;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 18px;
+  place-items: center;
+  border-radius: 14px;
+  color: #07111f;
+  font-size: 2.3rem;
+  font-weight: bold;
+  background: var(--cor);
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.dado {
+  padding: 11px;
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+}
+
+.dado strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--texto-secundario);
+  font-size: 0.75rem;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .controles {
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .dados {
+    grid-template-columns: 1fr;
+  }
+}

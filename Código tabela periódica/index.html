@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+  <title>Tabela Periódica Interativa</title>
+
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Tabela Periódica Interativa</h1>
+    <p>Clique em um elemento para visualizar suas informações.</p>
+  </header>
+
+  <main>
+    <section class="controles" aria-label="Filtros">
+      <input
+        id="pesquisa"
+        type="search"
+        placeholder="Pesquise por nome, símbolo ou número..."
+        autocomplete="off"
+        aria-label="Pesquisar elemento"
+      >
+
+      <button id="limpar" type="button">Limpar filtros</button>
+    </section>
+
+    <section id="legenda" class="legenda" aria-label="Categorias"></section>
+
+    <p id="resultado" class="resultado"></p>
+
+    <div class="rolagem">
+      <section
+        id="tabela-periodica"
+        class="tabela-periodica"
+        aria-label="Tabela periódica"
+      ></section>
+    </div>
+  </main>
+
+  <dialog id="modal">
+    <button id="fechar-modal" class="fechar" type="button" aria-label="Fechar">
+
+    </button>
+
+    <div id="detalhes"></div>
+  </dialog>
+
+  <footer>
+    <p>Projeto desenvolvido com HTML, CSS e JavaScript.</p>
+  </footer>
+</body>
+</html>
